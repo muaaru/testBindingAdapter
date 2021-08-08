@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.example.testBindingAdapter.ui.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainFragment">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/layerButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:constraint_referenced_ids="buttonVisible,buttonInVisible,buttonGone"
+            app:layout_constraintBottom_toTopOf="@id/layerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/buttonVisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visible"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/buttonInVisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Invisible"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/buttonGone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gone"
+            tools:ignore="HardcodedText" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/layerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:constraint_referenced_ids="viewA,viewB,viewC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layerButton"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/viewA"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@android:color/holo_blue_light" />
+
+        <View
+            android:id="@+id/viewB"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@android:color/holo_blue_light"
+            android:bindVisibleInvisibleGone="@{viewmodel.visibilityValue}" />
+
+        <View
+            android:id="@+id/viewC"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@android:color/holo_blue_light" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
